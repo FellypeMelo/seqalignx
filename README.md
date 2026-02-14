@@ -21,6 +21,31 @@ O alinhamento global busca encontrar a melhor correspondência entre **duas sequ
 - **Cálculo de Score**: Pontuação do melhor alinhamento possível
 - **Sem Dependências**: Usa apenas Python padrão
 
+## Estrutura de Dados
+
+### 📁 `test_data/` - Dados Sintéticos (Commitados)
+Contém **55+ pares de sequências** com similaridade conhecida:
+- ✅ **Commitados no GitHub**
+- 🎯 **Similaridade controlada** (idênticas 100%, alta 80-95%, média 50-70%, baixa 20-40%)
+- 📊 **Casos especiais** (com gaps, complementar reversa, proteínas)
+- 🧪 **Validação precisa** (score esperado conhecido)
+
+**Regenerar:**
+```bash
+python generate_test_data.py
+```
+
+### 📁 `data/` - Dados Reais (Gitignored)
+Para dados reais de pesquisa:
+- 🚫 **Ignorado pelo Git**
+- 🧬 **Sequências reais** do NCBI
+- 🔄 **Homólogos entre espécies**
+
+**Fontes recomendadas:**
+- **NCBI Nucleotide** - Genes homólogos (ex: Insulina Humano vs Camundongo)
+- **Ensembl** - Alinhamentos genômicos
+- **UniProt** - Sequências de proteínas
+
 ## Instalação
 
 ### Pré-requisitos
