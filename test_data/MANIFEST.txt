@@ -2,7 +2,7 @@
 SeqAlignX - Dados de Teste Sintéticos
 ======================================================================
 
-Gerado em: 2026-02-14 17:31:59
+Gerado em: 2026-02-14 17:42:01
 Total de datasets: 55
 
 ATENÇÃO: Estes são dados FABRICADOS para teste.
@@ -12,95 +12,95 @@ Formato: Cada arquivo contém 2 sequências (seq1 e seq2)
 Lista de arquivos:
 ----------------------------------------------------------------------
 seqalignx_test_01_identical.fasta - Identical sequences
-  Seq1: 189 bp, Seq2: 189 bp
+  Seq1: 120 bp, Seq2: 120 bp
 seqalignx_test_02_identical.fasta - Identical sequences
-  Seq1: 163 bp, Seq2: 163 bp
+  Seq1: 151 bp, Seq2: 151 bp
 seqalignx_test_03_identical.fasta - Identical sequences
-  Seq1: 55 bp, Seq2: 55 bp
+  Seq1: 84 bp, Seq2: 84 bp
 seqalignx_test_04_identical.fasta - Identical sequences
-  Seq1: 129 bp, Seq2: 129 bp
+  Seq1: 113 bp, Seq2: 113 bp
 seqalignx_test_05_identical.fasta - Identical sequences
-  Seq1: 146 bp, Seq2: 146 bp
+  Seq1: 53 bp, Seq2: 53 bp
 seqalignx_test_06_identical.fasta - Identical sequences
-  Seq1: 155 bp, Seq2: 155 bp
+  Seq1: 94 bp, Seq2: 94 bp
 seqalignx_test_07_identical.fasta - Identical sequences
-  Seq1: 196 bp, Seq2: 196 bp
+  Seq1: 180 bp, Seq2: 180 bp
 seqalignx_test_08_identical.fasta - Identical sequences
-  Seq1: 200 bp, Seq2: 200 bp
+  Seq1: 177 bp, Seq2: 177 bp
 seqalignx_test_09_identical.fasta - Identical sequences
-  Seq1: 158 bp, Seq2: 158 bp
+  Seq1: 89 bp, Seq2: 89 bp
 seqalignx_test_10_identical.fasta - Identical sequences
-  Seq1: 123 bp, Seq2: 123 bp
-seqalignx_test_11_high_similarity.fasta - High similarity ~92%
-  Seq1: 96 bp, Seq2: 96 bp
-seqalignx_test_12_high_similarity.fasta - High similarity ~81%
-  Seq1: 200 bp, Seq2: 200 bp
-seqalignx_test_13_high_similarity.fasta - High similarity ~90%
-  Seq1: 149 bp, Seq2: 149 bp
-seqalignx_test_14_high_similarity.fasta - High similarity ~91%
-  Seq1: 71 bp, Seq2: 71 bp
-seqalignx_test_15_high_similarity.fasta - High similarity ~82%
-  Seq1: 72 bp, Seq2: 72 bp
-seqalignx_test_16_high_similarity.fasta - High similarity ~86%
-  Seq1: 111 bp, Seq2: 111 bp
-seqalignx_test_17_high_similarity.fasta - High similarity ~94%
-  Seq1: 142 bp, Seq2: 142 bp
-seqalignx_test_18_high_similarity.fasta - High similarity ~90%
-  Seq1: 70 bp, Seq2: 70 bp
-seqalignx_test_19_high_similarity.fasta - High similarity ~85%
-  Seq1: 71 bp, Seq2: 71 bp
-seqalignx_test_20_high_similarity.fasta - High similarity ~86%
-  Seq1: 129 bp, Seq2: 129 bp
-seqalignx_test_21_medium_similarity.fasta - Medium similarity ~53%
-  Seq1: 128 bp, Seq2: 128 bp
-seqalignx_test_22_medium_similarity.fasta - Medium similarity ~59%
-  Seq1: 54 bp, Seq2: 54 bp
-seqalignx_test_23_medium_similarity.fasta - Medium similarity ~54%
-  Seq1: 106 bp, Seq2: 106 bp
-seqalignx_test_24_medium_similarity.fasta - Medium similarity ~69%
-  Seq1: 158 bp, Seq2: 158 bp
-seqalignx_test_25_medium_similarity.fasta - Medium similarity ~53%
-  Seq1: 101 bp, Seq2: 101 bp
-seqalignx_test_26_medium_similarity.fasta - Medium similarity ~54%
-  Seq1: 127 bp, Seq2: 127 bp
-seqalignx_test_27_medium_similarity.fasta - Medium similarity ~69%
-  Seq1: 181 bp, Seq2: 181 bp
-seqalignx_test_28_medium_similarity.fasta - Medium similarity ~51%
+  Seq1: 182 bp, Seq2: 182 bp
+seqalignx_test_11_high_similarity.fasta - High similarity ~87%
+  Seq1: 163 bp, Seq2: 163 bp
+seqalignx_test_12_high_similarity.fasta - High similarity ~86%
+  Seq1: 125 bp, Seq2: 125 bp
+seqalignx_test_13_high_similarity.fasta - High similarity ~83%
   Seq1: 167 bp, Seq2: 167 bp
-seqalignx_test_29_medium_similarity.fasta - Medium similarity ~67%
-  Seq1: 71 bp, Seq2: 71 bp
-seqalignx_test_30_medium_similarity.fasta - Medium similarity ~53%
-  Seq1: 133 bp, Seq2: 133 bp
-seqalignx_test_31_low_similarity.fasta - Low similarity ~37%
-  Seq1: 116 bp, Seq2: 116 bp
-seqalignx_test_32_low_similarity.fasta - Low similarity ~27%
-  Seq1: 199 bp, Seq2: 199 bp
-seqalignx_test_33_low_similarity.fasta - Low similarity ~37%
+seqalignx_test_14_high_similarity.fasta - High similarity ~82%
+  Seq1: 117 bp, Seq2: 117 bp
+seqalignx_test_15_high_similarity.fasta - High similarity ~94%
+  Seq1: 154 bp, Seq2: 154 bp
+seqalignx_test_16_high_similarity.fasta - High similarity ~80%
+  Seq1: 188 bp, Seq2: 188 bp
+seqalignx_test_17_high_similarity.fasta - High similarity ~86%
+  Seq1: 104 bp, Seq2: 104 bp
+seqalignx_test_18_high_similarity.fasta - High similarity ~87%
+  Seq1: 132 bp, Seq2: 132 bp
+seqalignx_test_19_high_similarity.fasta - High similarity ~94%
+  Seq1: 137 bp, Seq2: 137 bp
+seqalignx_test_20_high_similarity.fasta - High similarity ~89%
+  Seq1: 169 bp, Seq2: 169 bp
+seqalignx_test_21_medium_similarity.fasta - Medium similarity ~53%
+  Seq1: 88 bp, Seq2: 88 bp
+seqalignx_test_22_medium_similarity.fasta - Medium similarity ~62%
+  Seq1: 102 bp, Seq2: 102 bp
+seqalignx_test_23_medium_similarity.fasta - Medium similarity ~59%
   Seq1: 87 bp, Seq2: 87 bp
-seqalignx_test_34_low_similarity.fasta - Low similarity ~21%
-  Seq1: 64 bp, Seq2: 64 bp
-seqalignx_test_35_low_similarity.fasta - Low similarity ~26%
-  Seq1: 131 bp, Seq2: 131 bp
+seqalignx_test_24_medium_similarity.fasta - Medium similarity ~67%
+  Seq1: 121 bp, Seq2: 121 bp
+seqalignx_test_25_medium_similarity.fasta - Medium similarity ~60%
+  Seq1: 134 bp, Seq2: 134 bp
+seqalignx_test_26_medium_similarity.fasta - Medium similarity ~52%
+  Seq1: 158 bp, Seq2: 158 bp
+seqalignx_test_27_medium_similarity.fasta - Medium similarity ~59%
+  Seq1: 81 bp, Seq2: 81 bp
+seqalignx_test_28_medium_similarity.fasta - Medium similarity ~52%
+  Seq1: 74 bp, Seq2: 74 bp
+seqalignx_test_29_medium_similarity.fasta - Medium similarity ~66%
+  Seq1: 118 bp, Seq2: 118 bp
+seqalignx_test_30_medium_similarity.fasta - Medium similarity ~70%
+  Seq1: 164 bp, Seq2: 164 bp
+seqalignx_test_31_low_similarity.fasta - Low similarity ~33%
+  Seq1: 121 bp, Seq2: 121 bp
+seqalignx_test_32_low_similarity.fasta - Low similarity ~39%
+  Seq1: 73 bp, Seq2: 73 bp
+seqalignx_test_33_low_similarity.fasta - Low similarity ~36%
+  Seq1: 183 bp, Seq2: 183 bp
+seqalignx_test_34_low_similarity.fasta - Low similarity ~24%
+  Seq1: 113 bp, Seq2: 113 bp
+seqalignx_test_35_low_similarity.fasta - Low similarity ~36%
+  Seq1: 113 bp, Seq2: 113 bp
 seqalignx_test_36_with_gaps.fasta - With indels (gaps)
-  Seq1: 145 bp, Seq2: 133 bp
+  Seq1: 112 bp, Seq2: 100 bp
 seqalignx_test_37_with_gaps.fasta - With indels (gaps)
-  Seq1: 122 bp, Seq2: 105 bp
+  Seq1: 136 bp, Seq2: 120 bp
 seqalignx_test_38_with_gaps.fasta - With indels (gaps)
-  Seq1: 145 bp, Seq2: 130 bp
+  Seq1: 126 bp, Seq2: 110 bp
 seqalignx_test_39_with_gaps.fasta - With indels (gaps)
-  Seq1: 94 bp, Seq2: 80 bp
+  Seq1: 81 bp, Seq2: 74 bp
 seqalignx_test_40_with_gaps.fasta - With indels (gaps)
-  Seq1: 85 bp, Seq2: 77 bp
+  Seq1: 104 bp, Seq2: 100 bp
 seqalignx_test_41_conserved.fasta - Conserved regions
-  Seq1: 122 bp, Seq2: 122 bp
+  Seq1: 133 bp, Seq2: 133 bp
 seqalignx_test_42_conserved.fasta - Conserved regions
-  Seq1: 146 bp, Seq2: 146 bp
+  Seq1: 118 bp, Seq2: 118 bp
 seqalignx_test_43_conserved.fasta - Conserved regions
-  Seq1: 148 bp, Seq2: 148 bp
+  Seq1: 130 bp, Seq2: 130 bp
 seqalignx_test_44_conserved.fasta - Conserved regions
-  Seq1: 128 bp, Seq2: 128 bp
+  Seq1: 138 bp, Seq2: 138 bp
 seqalignx_test_45_conserved.fasta - Conserved regions
-  Seq1: 135 bp, Seq2: 135 bp
+  Seq1: 121 bp, Seq2: 121 bp
 seqalignx_test_46_very_short.fasta - Very short (10bp)
   Seq1: 10 bp, Seq2: 10 bp
 seqalignx_test_47_very_long.fasta - Very long (500bp)
