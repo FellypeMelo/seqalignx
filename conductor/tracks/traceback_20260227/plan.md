@@ -14,7 +14,8 @@
 - [x] Task: Conductor - User Manual Verification 'Implementation' (Protocol in workflow.md)
 
 ## Phase 3: Display and Formatting
-- [ ] Task: Implement clear CLI formatting for the alignment (e.g., side-by-side or stacked)
-- [ ] Task: Conductor - User Manual Verification 'Display and Formatting' (Protocol in workflow.md)
+- [x] Task: Implement clear CLI formatting for the alignment (e.g., side-by-side or stacked) 5980407
+- [~] Task: Conductor - User Manual Verification 'Display and Formatting' (Protocol in workflow.md)
+
 
 
