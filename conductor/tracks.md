@@ -4,5 +4,5 @@ This file tracks all major tracks for the project. Each track has its own detail
 
 ---
 
-- [ ] **Track: Implement Traceback and Alignment Reconstruction**
+- [x] **Track: Implement Traceback and Alignment Reconstruction**
   *Link: [./tracks/traceback_20260227/](./tracks/traceback_20260227/)*
