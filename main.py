@@ -102,6 +102,48 @@ def needleman_wunsch(seq1, seq2):
     return get_alignment_score(score_matrix)
 
 
+def traceback(score_matrix, seq1, seq2):
+    """
+    Reconstrói o alinhamento ótimo a partir da matriz de pontuação.
+
+    Args:
+        score_matrix: Matriz de pontuação preenchida
+        seq1: Primeira sequência original
+        seq2: Segunda sequência original
+
+    Returns:
+        tuple: (aligned_seq1, aligned_seq2)
+    """
+    aligned_seq1 = []
+    aligned_seq2 = []
+
+    i, j = len(seq1), len(seq2)
+
+    while i > 0 or j > 0:
+        if i > 0 and j > 0:
+            # Verifica se veio da diagonal (match ou mismatch)
+            match = MATCH_SCORE if seq1[i - 1] == seq2[j - 1] else MISMATCH_SCORE
+            if score_matrix[i][j] == score_matrix[i - 1][j - 1] + match:
+                aligned_seq1.append(seq1[i - 1])
+                aligned_seq2.append(seq2[j - 1])
+                i -= 1
+                j -= 1
+                continue
+
+        if i > 0 and score_matrix[i][j] == score_matrix[i - 1][j] + GAP_SCORE:
+            # Veio de cima (gap na seq2)
+            aligned_seq1.append(seq1[i - 1])
+            aligned_seq2.append("-")
+            i -= 1
+        else:
+            # Veio da esquerda (gap na seq1)
+            aligned_seq1.append("-")
+            aligned_seq2.append(seq2[j - 1])
+            j -= 1
+
+    return "".join(reversed(aligned_seq1)), "".join(reversed(aligned_seq2))
+
+
 def print_matrix(score_matrix, seq1, seq2):
     """
     Imprime a matriz de pontuação formatada (para debug).
@@ -126,14 +168,21 @@ def main():
     print(f"\nSequência 1: {seq1}")
     print(f"Sequência 2: {seq2}")
 
-    # Executa algoritmo
-    score = needleman_wunsch(seq1, seq2)
-
-    print(f"\nScore de Alinhamento: {score}")
-
-    # Mostra matriz (opcional, para demonstração)
+    # Cria e preenche matriz
     score_matrix = create_score_matrix(seq1, seq2)
     score_matrix = fill_score_matrix(score_matrix, seq1, seq2)
+
+    # Calcula score
+    score = get_alignment_score(score_matrix)
+    print(f"\nScore de Alinhamento: {score}")
+
+    # Reconstrói alinhamento
+    align1, align2 = traceback(score_matrix, seq1, seq2)
+    print("\nAlinhamento Reconstruído:")
+    print(f"Seq 1: {align1}")
+    print(f"Seq 2: {align2}")
+
+    # Mostra matriz (opcional, para demonstração)
     print_matrix(score_matrix, seq1, seq2)
 
     print("\nAlinhamento concluído!")
