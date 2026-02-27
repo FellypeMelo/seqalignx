@@ -155,7 +155,8 @@ def format_alignment(align1: str, align2: str) -> str:
 
     Returns:
         str: String formatada com barras verticais para matches
-    """    matches = []
+    """
+    matches = []
     for c1, c2 in zip(align1, align2):
         if c1 == c2 and c1 != "-":
             matches.append("|")
@@ -179,6 +180,37 @@ def print_matrix(score_matrix, seq1, seq2):
     for i, row in enumerate(score_matrix):
         prefix = " " if i == 0 else seq1[i - 1]
         print(f"{prefix} " + " ".join(f"{val:3d}" for val in row))
+
+
+def read_fasta(file_path: str) -> list:
+    """
+    Lê sequências de um arquivo no formato FASTA.
+
+    Args:
+        file_path: Caminho para o arquivo .fasta
+
+    Returns:
+        list: Lista de sequências encontradas no arquivo
+    """
+    sequences = []
+    current_seq = []
+
+    with open(file_path, "r") as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            if line.startswith(">"):
+                if current_seq:
+                    sequences.append("".join(current_seq))
+                    current_seq = []
+            else:
+                current_seq.append(line)
+
+    if current_seq:
+        sequences.append("".join(current_seq))
+
+    return sequences
 
 
 def main():
