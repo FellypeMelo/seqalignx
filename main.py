@@ -8,19 +8,60 @@ O algoritmo utiliza programação dinâmica para encontrar o melhor
 alinhamento possível entre duas sequências.
 """
 
-# Constantes de pontuação
+import argparse
+import sys
+import os
+
+# Constantes de pontuação (Globais para referência, mas podem ser sobrescritas)
 MATCH_SCORE = 1
 MISMATCH_SCORE = -1
 GAP_SCORE = -1
 
 
-def create_score_matrix(seq1, seq2):
+def parse_args(args: list) -> argparse.Namespace:
+    """
+    Analisa os argumentos da linha de comando.
+
+    Args:
+        args: Lista de argumentos (ex: sys.argv[1:])
+
+    Returns:
+        argparse.Namespace: Objeto com os argumentos analisados
+    """
+    parser = argparse.ArgumentParser(
+        description="SeqAlignX - Alinhamento Global de Sequências (Needleman-Wunsch)"
+    )
+
+    parser.add_argument(
+        "--seq1", required=True, help="Caminho para o arquivo FASTA da primeira sequência"
+    )
+    parser.add_argument(
+        "--seq2", required=True, help="Caminho para o arquivo FASTA da segunda sequência"
+    )
+    parser.add_argument(
+        "--match", type=int, default=1, help="Pontuação para match (padrão: 1)"
+    )
+    parser.add_argument(
+        "--mismatch", type=int, default=-1, help="Pontuação para mismatch (padrão: -1)"
+    )
+    parser.add_argument(
+        "--gap", type=int, default=-1, help="Penalidade de gap (padrão: -1)"
+    )
+    parser.add_argument(
+        "--quiet", action="store_true", help="Não exibe a matriz de pontuação"
+    )
+
+    return parser.parse_args(args)
+
+
+def create_score_matrix(seq1: str, seq2: str, gap_val: int = -1):
     """
     Cria e inicializa a matriz de pontuação.
 
     Args:
         seq1: Primeira sequência
         seq2: Segunda sequência
+        gap_val: Penalidade de gap
 
     Returns:
         list: Matriz de pontuação inicializada
@@ -32,16 +73,17 @@ def create_score_matrix(seq1, seq2):
 
     # Preenche primeira coluna (gaps na sequência 2)
     for i in range(1, m + 1):
-        score_matrix[i][0] = score_matrix[i - 1][0] + GAP_SCORE
+        score_matrix[i][0] = score_matrix[i - 1][0] + gap_val
 
     # Preenche primeira linha (gaps na sequência 1)
     for j in range(1, n + 1):
-        score_matrix[0][j] = score_matrix[0][j - 1] + GAP_SCORE
+        score_matrix[0][j] = score_matrix[0][j - 1] + gap_val
 
     return score_matrix
 
 
-def fill_score_matrix(score_matrix, seq1, seq2):
+def fill_score_matrix(score_matrix: list, seq1: str, seq2: str, 
+                      match_val: int = 1, mismatch_val: int = -1, gap_val: int = -1):
     """
     Preenche a matriz de pontuação usando o algoritmo Needleman-Wunsch.
 
@@ -49,6 +91,9 @@ def fill_score_matrix(score_matrix, seq1, seq2):
         score_matrix: Matriz inicializada
         seq1: Primeira sequência
         seq2: Segunda sequência
+        match_val: Valor para match
+        mismatch_val: Valor para mismatch
+        gap_val: Valor para gap
 
     Returns:
         list: Matriz completamente preenchida
@@ -58,12 +103,12 @@ def fill_score_matrix(score_matrix, seq1, seq2):
     for i in range(1, m + 1):
         for j in range(1, n + 1):
             # Calcula pontuação do match/mismatch
-            match = MATCH_SCORE if seq1[i - 1] == seq2[j - 1] else MISMATCH_SCORE
+            match = match_val if seq1[i - 1] == seq2[j - 1] else mismatch_val
 
             # Calcula três possibilidades
             diagonal = score_matrix[i - 1][j - 1] + match  # Match/Mismatch
-            up = score_matrix[i - 1][j] + GAP_SCORE  # Gap em seq2
-            left = score_matrix[i][j - 1] + GAP_SCORE  # Gap em seq1
+            up = score_matrix[i - 1][j] + gap_val  # Gap em seq2
+            left = score_matrix[i][j - 1] + gap_val  # Gap em seq1
 
             # Escolhe o máximo
             score_matrix[i][j] = max(diagonal, up, left)
@@ -71,7 +116,7 @@ def fill_score_matrix(score_matrix, seq1, seq2):
     return score_matrix
 
 
-def get_alignment_score(score_matrix):
+def get_alignment_score(score_matrix: list):
     """
     Retorna o score final do alinhamento.
 
@@ -84,25 +129,30 @@ def get_alignment_score(score_matrix):
     return score_matrix[-1][-1]
 
 
-def needleman_wunsch(seq1, seq2):
+def needleman_wunsch(seq1: str, seq2: str, match_val: int = 1, 
+                     mismatch_val: int = -1, gap_val: int = -1):
     """
     Executa o algoritmo completo de Needleman-Wunsch.
 
     Args:
         seq1: Primeira sequência
         seq2: Segunda sequência
+        match_val: Valor para match
+        mismatch_val: Valor para mismatch
+        gap_val: Valor para gap
 
     Returns:
         int: Score do melhor alinhamento global
     """
     # Cria e preenche matriz
-    score_matrix = create_score_matrix(seq1, seq2)
-    score_matrix = fill_score_matrix(score_matrix, seq1, seq2)
+    score_matrix = create_score_matrix(seq1, seq2, gap_val)
+    score_matrix = fill_score_matrix(score_matrix, seq1, seq2, match_val, mismatch_val, gap_val)
 
     return get_alignment_score(score_matrix)
 
 
-def traceback(score_matrix: list, seq1: str, seq2: str) -> tuple:
+def traceback(score_matrix: list, seq1: str, seq2: str, 
+              match_val: int = 1, mismatch_val: int = -1, gap_val: int = -1) -> tuple:
     """
     Reconstrói o alinhamento ótimo a partir da matriz de pontuação.
 
@@ -110,6 +160,9 @@ def traceback(score_matrix: list, seq1: str, seq2: str) -> tuple:
         score_matrix: Matriz de pontuação preenchida
         seq1: Primeira sequência original
         seq2: Segunda sequência original
+        match_val: Valor para match
+        mismatch_val: Valor para mismatch
+        gap_val: Valor para gap
 
     Returns:
         tuple: (aligned_seq1, aligned_seq2)
@@ -123,7 +176,7 @@ def traceback(score_matrix: list, seq1: str, seq2: str) -> tuple:
         if i > 0 and j > 0:
             # Verifica se veio da diagonal (match ou mismatch)
             is_match = seq1[i - 1] == seq2[j - 1]
-            match = MATCH_SCORE if is_match else MISMATCH_SCORE
+            match = match_val if is_match else mismatch_val
             if score_matrix[i][j] == score_matrix[i - 1][j - 1] + match:
                 aligned_seq1.append(seq1[i - 1])
                 aligned_seq2.append(seq2[j - 1])
@@ -131,7 +184,7 @@ def traceback(score_matrix: list, seq1: str, seq2: str) -> tuple:
                 j -= 1
                 continue
 
-        if i > 0 and score_matrix[i][j] == score_matrix[i - 1][j] + GAP_SCORE:
+        if i > 0 and score_matrix[i][j] == score_matrix[i - 1][j] + gap_val:
             # Veio de cima (gap na seq2)
             aligned_seq1.append(seq1[i - 1])
             aligned_seq2.append("-")
@@ -170,7 +223,7 @@ def format_alignment(align1: str, align2: str) -> str:
     return f"{line1}\n{line2}\n{line3}"
 
 
-def print_matrix(score_matrix, seq1, seq2):
+def print_matrix(score_matrix: list, seq1: str, seq2: str):
     """
     Imprime a matriz de pontuação formatada (para debug).
     """
@@ -192,6 +245,9 @@ def read_fasta(file_path: str) -> list:
     Returns:
         list: Lista de sequências encontradas no arquivo
     """
+    if not os.path.exists(file_path):
+        raise FileNotFoundError(f"Arquivo não encontrado: {file_path}")
+
     sequences = []
     current_seq = []
 
@@ -215,31 +271,49 @@ def read_fasta(file_path: str) -> list:
 
 def main():
     """Função principal do programa."""
-    # Sequências de exemplo
-    seq1 = "GATTACA"
-    seq2 = "GCATGCU"
+    try:
+        args = parse_args(sys.argv[1:])
+    except SystemExit:
+        return
+
+    # Lê sequências dos arquivos FASTA
+    try:
+        seqs1 = read_fasta(args.seq1)
+        seqs2 = read_fasta(args.seq2)
+        
+        if not seqs1 or not seqs2:
+            print("Erro: Um dos arquivos FASTA está vazio.")
+            sys.exit(1)
+            
+        seq1 = seqs1[0]
+        seq2 = seqs2[0]
+    except Exception as e:
+        print(f"Erro ao ler arquivos: {e}")
+        sys.exit(1)
 
     print("=" * 60)
     print("SeqAlignX - Alinhamento Global (Needleman-Wunsch)")
     print("=" * 60)
-    print(f"\nSequência 1: {seq1}")
-    print(f"Sequência 2: {seq2}")
+    print(f"\nSequência 1: {args.seq1} (Tamanho: {len(seq1)})")
+    print(f"Sequência 2: {args.seq2} (Tamanho: {len(seq2)})")
 
     # Cria e preenche matriz
-    score_matrix = create_score_matrix(seq1, seq2)
-    score_matrix = fill_score_matrix(score_matrix, seq1, seq2)
+    score_matrix = create_score_matrix(seq1, seq2, args.gap)
+    score_matrix = fill_score_matrix(score_matrix, seq1, seq2, 
+                                     args.match, args.mismatch, args.gap)
 
     # Calcula score
     score = get_alignment_score(score_matrix)
     print(f"\nScore de Alinhamento: {score}")
 
     # Reconstrói alinhamento
-    align1, align2 = traceback(score_matrix, seq1, seq2)
+    align1, align2 = traceback(score_matrix, seq1, seq2, args.match, args.mismatch, args.gap)
     print("\nAlinhamento Reconstruído:")
     print(format_alignment(align1, align2))
 
-    # Mostra matriz (opcional, para demonstração)
-    print_matrix(score_matrix, seq1, seq2)
+    # Mostra matriz (opcional)
+    if not args.quiet:
+        print_matrix(score_matrix, seq1, seq2)
 
     print("\nAlinhamento concluído!")
 
