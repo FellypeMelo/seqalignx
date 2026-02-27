@@ -12,9 +12,10 @@
 - [x] Task: Refactor main.py to use parsed arguments instead of hardcoded strings
 - [x] Task: Conductor - User Manual Verification 'CLI Interface' (Protocol in workflow.md)
 
-## Phase 3: Integration and Robustness
-- [ ] Task: Add integration tests running the full CLI against 	est_data/ files
-- [ ] Task: Implement "Quiet Mode" to suppress matrix printing
-- [ ] Task: Conductor - User Manual Verification 'Integration and Robustness' (Protocol in workflow.md)
+## Phase 3: Integration and Robustness [checkpoint: ce1979b]
+- [x] Task: Add integration tests running the full CLI against test_data/ files
+- [x] Task: Implement "Quiet Mode" to suppress matrix printing
+- [x] Task: Conductor - User Manual Verification 'Integration and Robustness' (Protocol in workflow.md)
+
 
 
