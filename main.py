@@ -102,7 +102,7 @@ def needleman_wunsch(seq1, seq2):
     return get_alignment_score(score_matrix)
 
 
-def traceback(score_matrix, seq1, seq2):
+def traceback(score_matrix: list, seq1: str, seq2: str) -> tuple:
     """
     Reconstrói o alinhamento ótimo a partir da matriz de pontuação.
 
@@ -122,7 +122,8 @@ def traceback(score_matrix, seq1, seq2):
     while i > 0 or j > 0:
         if i > 0 and j > 0:
             # Verifica se veio da diagonal (match ou mismatch)
-            match = MATCH_SCORE if seq1[i - 1] == seq2[j - 1] else MISMATCH_SCORE
+            is_match = seq1[i - 1] == seq2[j - 1]
+            match = MATCH_SCORE if is_match else MISMATCH_SCORE
             if score_matrix[i][j] == score_matrix[i - 1][j - 1] + match:
                 aligned_seq1.append(seq1[i - 1])
                 aligned_seq2.append(seq2[j - 1])
@@ -144,7 +145,7 @@ def traceback(score_matrix, seq1, seq2):
     return "".join(reversed(aligned_seq1)), "".join(reversed(aligned_seq2))
 
 
-def format_alignment(align1, align2):
+def format_alignment(align1: str, align2: str) -> str:
     """
     Formata o alinhamento para exibição visual.
 
@@ -154,8 +155,7 @@ def format_alignment(align1, align2):
 
     Returns:
         str: String formatada com barras verticais para matches
-    """
-    matches = []
+    """    matches = []
     for c1, c2 in zip(align1, align2):
         if c1 == c2 and c1 != "-":
             matches.append("|")
