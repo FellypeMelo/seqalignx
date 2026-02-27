@@ -1,9 +1,9 @@
 # Implementation Plan - Implement Traceback and Alignment Reconstruction
 
-## Phase 1: Research and Preparation
+## Phase 1: Research and Preparation [checkpoint: d01e359]
 - [x] Task: Analyze current matrix filling logic in main.py
 - [x] Task: Design the traceback function signature and return type
-- [~] Task: Conductor - User Manual Verification 'Research and Preparation' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Research and Preparation' (Protocol in workflow.md)
 
 ## Phase 2: Implementation
 - [ ] Task: Create tests for alignment reconstruction
@@ -16,3 +16,4 @@
 ## Phase 3: Display and Formatting
 - [ ] Task: Implement clear CLI formatting for the alignment (e.g., side-by-side or stacked)
 - [ ] Task: Conductor - User Manual Verification 'Display and Formatting' (Protocol in workflow.md)
+
