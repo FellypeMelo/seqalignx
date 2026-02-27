@@ -18,7 +18,8 @@ SeqAlignX aims to be the go-to educational and practical tool for understanding 
 
 ## Key Features
 - **Traceback Implementation:** (Implemented) Reconstruct and visualize the optimal alignment between two sequences with professional biological formatting.
-- **FASTA Support:** Directly read and process sequence data from .fasta files.
+- **FASTA Support:** (Implemented) Directly read and process DNA/RNA/Protein sequence data from .fasta files, supporting multiline sequences.
+- **CLI Interface:** (Implemented) Interactive command-line interface for specifying input files and custom scoring parameters.
 - **Substitution Matrices:** Support for advanced scoring systems like BLOSUM and PAM for more accurate protein alignments.
 - **Dynamic Programming Visualization:** (Existing) Clear display of the scoring matrix to demystify the algorithm's internal state.
 
