@@ -13,11 +13,11 @@ SeqAlignX aims to be the go-to educational and practical tool for understanding 
 
 ## Core Goals
 - **Educational Clarity:** Keep the code readable and well-documented to serve as a learning resource.
-- **Algorithm Completion:** Fully implement the Needleman-Wunsch algorithm, including the critical traceback step.
+- **Algorithm Completion:** (Completed) Fully implement the Needleman-Wunsch algorithm, including the critical traceback step.
 - **Practical Utility:** Move beyond simple hardcoded strings to supporting industry-standard file formats and scoring systems.
 
 ## Key Features
-- **Traceback Implementation:** Reconstruct and visualize the optimal alignment between two sequences.
+- **Traceback Implementation:** (Implemented) Reconstruct and visualize the optimal alignment between two sequences with professional biological formatting.
 - **FASTA Support:** Directly read and process sequence data from .fasta files.
 - **Substitution Matrices:** Support for advanced scoring systems like BLOSUM and PAM for more accurate protein alignments.
 - **Dynamic Programming Visualization:** (Existing) Clear display of the scoring matrix to demystify the algorithm's internal state.
