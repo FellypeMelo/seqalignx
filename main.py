@@ -144,6 +144,31 @@ def traceback(score_matrix, seq1, seq2):
     return "".join(reversed(aligned_seq1)), "".join(reversed(aligned_seq2))
 
 
+def format_alignment(align1, align2):
+    """
+    Formata o alinhamento para exibição visual.
+
+    Args:
+        align1: Primeira sequência alinhada (com gaps)
+        align2: Segunda sequência alinhada (com gaps)
+
+    Returns:
+        str: String formatada com barras verticais para matches
+    """
+    matches = []
+    for c1, c2 in zip(align1, align2):
+        if c1 == c2 and c1 != "-":
+            matches.append("|")
+        else:
+            matches.append(" ")
+
+    line1 = " ".join(align1)
+    line2 = " ".join(matches)
+    line3 = " ".join(align2)
+
+    return f"{line1}\n{line2}\n{line3}"
+
+
 def print_matrix(score_matrix, seq1, seq2):
     """
     Imprime a matriz de pontuação formatada (para debug).
@@ -179,8 +204,7 @@ def main():
     # Reconstrói alinhamento
     align1, align2 = traceback(score_matrix, seq1, seq2)
     print("\nAlinhamento Reconstruído:")
-    print(f"Seq 1: {align1}")
-    print(f"Seq 2: {align2}")
+    print(format_alignment(align1, align2))
 
     # Mostra matriz (opcional, para demonstração)
     print_matrix(score_matrix, seq1, seq2)
